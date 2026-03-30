@@ -27,6 +27,49 @@ describe('isIsoTimeStamp', () => {
       const result = asIsoTimeStamp({ date });
       expect(result).toEqual('2024-01-15T14:30:00Z');
     });
+
+    it('should output correct UTC regardless of input timezone representation', () => {
+      // all of these represent the same instant in time
+      const inputs = [
+        new Date('2024-01-15T14:30:00Z'),
+        '2024-01-15T14:30:00Z',
+        '2024-01-15T09:30:00-05:00', // same instant in EST
+        { mse: new Date('2024-01-15T14:30:00Z').getTime() },
+      ];
+      for (const input of inputs) {
+        expect(asIsoTimeStamp(input)).toEqual('2024-01-15T14:30:00Z');
+      }
+    });
+
+    it('should include milliseconds when precision is milli.x10^-3', () => {
+      const date = new Date('2024-01-15T14:30:00.123Z');
+      const result = asIsoTimeStamp(date, { precision: 'milli.x10^-3' });
+      expect(result).toEqual('2024-01-15T14:30:00.123Z');
+    });
+
+    it('should include milliseconds when precision is milli.x10^-3 even if zero', () => {
+      const date = new Date('2024-01-15T14:30:00.000Z');
+      const result = asIsoTimeStamp(date, { precision: 'milli.x10^-3' });
+      expect(result).toEqual('2024-01-15T14:30:00.000Z');
+    });
+
+    it('should strip milliseconds when precision is whole.x10^0', () => {
+      const date = new Date('2024-01-15T14:30:00.999Z');
+      const result = asIsoTimeStamp(date, { precision: 'whole.x10^0' });
+      expect(result).toEqual('2024-01-15T14:30:00Z');
+    });
+
+    it('should auto-include non-zero milliseconds by default', () => {
+      const date = new Date('2024-01-15T14:30:00.123Z');
+      const result = asIsoTimeStamp(date);
+      expect(result).toEqual('2024-01-15T14:30:00.123Z');
+    });
+
+    it('should auto-strip zero milliseconds by default', () => {
+      const date = new Date('2024-01-15T14:30:00.000Z');
+      const result = asIsoTimeStamp(date);
+      expect(result).toEqual('2024-01-15T14:30:00Z');
+    });
   });
 
   describe('isIsoTimeStamp', () => {
@@ -58,8 +101,9 @@ describe('isIsoTimeStamp', () => {
       expect(isIsoTimeStamp('2024-01-15')).toBe(false);
     });
 
-    it('should return false for timestamp with milliseconds', () => {
-      expect(isIsoTimeStamp('2024-01-15T14:30:00.000Z')).toBe(false);
+    it('should return true for timestamp with milliseconds', () => {
+      expect(isIsoTimeStamp('2024-01-15T14:30:00.000Z')).toBe(true);
+      expect(isIsoTimeStamp('2024-01-15T14:30:00.123Z')).toBe(true);
     });
 
     it('should return false for invalid string', () => {
