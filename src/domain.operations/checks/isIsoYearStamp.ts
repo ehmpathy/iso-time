@@ -1,4 +1,3 @@
-import { format } from 'date-fns/format';
 import { parseISO } from 'date-fns/parseISO';
 import { withAssure } from 'type-fns';
 
@@ -6,13 +5,22 @@ import type { IsoYearStamp } from '@src/domain.objects/IsoTimeStamp';
 import { castInputToDate } from '@src/domain.operations/casts/castInputToDate';
 
 /**
- * .what = casts input to IsoYearStamp format
- * .why = normalize various input types to strict ISO year
+ * .what = casts input to IsoYearStamp format in UTC
+ * .why = converts various input types to strict ISO year
  * .format = yyyy
+ *
+ * timezone is always 'utc' — years are extracted from UTC representation
  */
 export const asIsoYearStamp = (
   input: Parameters<typeof castInputToDate>[0],
-): IsoYearStamp => format(castInputToDate(input), 'yyyy') as IsoYearStamp;
+  options?: {
+    /** output timezone — always 'utc' */
+    timezone?: 'utc';
+  },
+): IsoYearStamp => {
+  const date = castInputToDate(input);
+  return date.toISOString().slice(0, 4) as IsoYearStamp;
+};
 
 /**
  * .what = validates string is IsoYearStamp format
