@@ -63,7 +63,7 @@
     "date-fns": "3.6.0",
     "domain-glossaries": "1.0.0",
     "helpful-errors": "1.7.2",
-    "simple-log-methods": "0.6.9",
+    "simple-log-methods": "0.6.10",
     "type-fns": "1.21.0"
   },
   "devDependencies": {

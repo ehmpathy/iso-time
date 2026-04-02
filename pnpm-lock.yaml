@@ -18,8 +18,8 @@ importers:
         specifier: 1.7.2
         version: 1.7.2
       simple-log-methods:
-        specifier: 0.6.9
-        version: 0.6.9
+        specifier: 0.6.10
+        version: 0.6.10
       type-fns:
         specifier: 1.21.0
         version: 1.21.0
@@ -2779,6 +2779,10 @@ packages:
     resolution: {integrity: sha512-x7G/Ig4vtvvL/Z7z+b2D2hwM+ZCr/NBKmujbKi9JA07KEVhI/yzHUPtAfiS6pkIODGQuEEqYicY/HMsUECimKw==}
     engines: {node: '>=8.0.0'}
 
+  domain-objects@0.31.10:
+    resolution: {integrity: sha512-5Bk53LAVvcLBPeTGaBKBdvXwSzpfKk2t9BDnPP4eSuENl7qdXf+eVk3zeSfxPUygKSgZPN1z1o4QQZIcw85vKw==}
+    engines: {node: '>=8.0.0'}
+
   domain-objects@0.31.3:
     resolution: {integrity: sha512-2mLwdU89tZn8dWaBWOi+bXAENB9g2fSHiDbMMboC7er3aesupqmZCJTCwiSYU/98Hj42sCoLLTXMpPgbOQL1Nw==}
     engines: {node: '>=8.0.0'}
@@ -4335,6 +4339,10 @@ packages:
 
   simple-log-methods@0.6.1:
     resolution: {integrity: sha512-POHiGnZqnQSivzgSDJfVE3/GAVPUEG0zc5vRLKIPpTnIQ6IY0QhOJOO3Ur0rKgXzwU/hlYpqabkELR62CauMhA==}
+    engines: {node: '>=8.0.0'}
+
+  simple-log-methods@0.6.10:
+    resolution: {integrity: sha512-XPJdeSlIPk4q52zTT9j1nNtZh9g6GQprABrzGEVqui7BmoQ5WcXa9VFg2ZKRg+yYAs4wH5sGcFJNAdNGznp1cQ==}
     engines: {node: '>=8.0.0'}
 
   simple-log-methods@0.6.2:
@@ -8049,8 +8057,15 @@ snapshots:
       '@types/yup': 0.29.14
       change-case: 4.1.2
       cross-sha256: 1.2.0
-      helpful-errors: 1.5.3
+      helpful-errors: 1.7.2
       type-fns: 1.21.0
+
+  domain-objects@0.31.10:
+    dependencies:
+      change-case: 4.1.2
+      helpful-errors: 1.7.2
+      type-fns: 1.21.0
+      uuid-fns: 1.1.3
 
   domain-objects@0.31.3:
     dependencies:
@@ -9978,6 +9993,15 @@ snapshots:
       domain-glossary-procedure: 1.0.0
       type-fns: 1.21.0
 
+  simple-log-methods@0.6.10:
+    dependencies:
+      '@ehmpathy/error-fns': 1.3.7
+      domain-glossary-procedure: 1.0.0
+      domain-objects: 0.31.10
+      helpful-errors: 1.7.2
+      iso-time: 1.11.4
+      type-fns: 1.21.0
+
   simple-log-methods@0.6.2:
     dependencies:
       '@ehmpathy/error-fns': 1.3.7
@@ -10261,7 +10285,7 @@ snapshots:
 
   type-fns@1.20.2:
     dependencies:
-      helpful-errors: 1.5.3
+      helpful-errors: 1.7.2
 
   type-fns@1.21.0:
     dependencies:
