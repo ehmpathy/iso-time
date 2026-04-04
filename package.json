@@ -62,9 +62,9 @@
   "dependencies": {
     "date-fns": "3.6.0",
     "domain-glossaries": "1.0.0",
-    "helpful-errors": "1.7.2",
+    "helpful-errors": "1.7.3",
     "simple-log-methods": "0.6.10",
-    "type-fns": "1.21.0"
+    "type-fns": "1.21.2"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.8",
