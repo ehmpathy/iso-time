@@ -2,7 +2,7 @@
   "name": "iso-time",
   "author": "ehmpathy",
   "description": "strict ISO 8601 timestamps, date stamps, and durations with runtime validation",
-  "version": "1.11.5",
+  "version": "1.11.6",
   "repository": "ehmpathy/iso-time",
   "homepage": "https://github.com/ehmpathy/iso-time",
   "keywords": [
