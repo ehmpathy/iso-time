@@ -10,8 +10,9 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "outDir": "dist",
-    "target": "es2020",
+    "target": "es2022",
     "lib": [
+      "es2022",
       "DOM"
     ],
     "baseUrl": ".",
@@ -24,8 +25,8 @@
       ]
     },
     "incremental": true,
-    "module": "commonjs",
-    "moduleResolution": "node"
+    "module": "node16",
+    "moduleResolution": "node16"
   },
   "extends": [
     "@tsconfig/strictest/tsconfig.json",
